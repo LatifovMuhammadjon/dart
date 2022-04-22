@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 void main(List<String> args) {
   bool a = false;
   String b = a.toString();
