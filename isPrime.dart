@@ -16,9 +16,7 @@ bool isPrime(int n) {
 }
 
 void main() {
-  stdout.write("a ning qiymatini kiriting:");
   int a = int.parse(stdin.readLineSync()!);
-  stdout.write("b ning qiymatini kiriting:");
   int b = int.parse(stdin.readLineSync()!);
   List<int> array = [];
   if (a > b) {
