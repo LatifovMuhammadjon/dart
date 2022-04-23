@@ -19,6 +19,7 @@ void main() {
   int a = int.parse(stdin.readLineSync()!);
   int b = int.parse(stdin.readLineSync()!);
   List<int> array = [];
+  // This is swap method without another variables
   if (a > b) {
     a += b;
     b = a - b;
