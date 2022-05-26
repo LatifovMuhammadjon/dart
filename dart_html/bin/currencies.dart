@@ -98,7 +98,7 @@ class Currencies {
           } else if (int.tryParse(n) != null) {
             a = int.parse(n).toDouble();
             print(
-                "$a! $cur1 = ${a * valueFromCurrencies[cur2.toLowerCase()]! / valueFromCurrencies[cur1.toLowerCase()]!} $cur2");
+                "$a $cur1 = ${a * valueFromCurrencies[cur2.toLowerCase()]! / valueFromCurrencies[cur1.toLowerCase()]!} $cur2");
           } else if (double.tryParse(n) != null) {
             a = double.parse(n);
             print(
