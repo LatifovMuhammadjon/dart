@@ -1,0 +1,195 @@
+{
+    "update": 1653821409952562,
+    "country": "uzbekistan",
+    "city": "farghona",
+    "year": 2022,
+    "month": 5,
+    "days": [
+        {
+            "day": 1,
+            "title": "Преимущественно облачно",
+            "tempDay": "+31°",
+            "tempNight": "+17°"
+        },
+        {
+            "day": 2,
+            "title": "Частично облачно",
+            "tempDay": "+33°",
+            "tempNight": "+19°"
+        },
+        {
+            "day": 3,
+            "title": "Преимущественно облачно",
+            "tempDay": "+28°",
+            "tempNight": "+21°"
+        },
+        {
+            "day": 4,
+            "title": "Облачно и кратковременные осадки",
+            "tempDay": "+21°",
+            "tempNight": "+19°"
+        },
+        {
+            "day": 5,
+            "title": "Частично облачно и вероятность дождя с грозами",
+            "tempDay": "+25°",
+            "tempNight": "+17°"
+        },
+        {
+            "day": 6,
+            "title": "Частично облачно и кратковременный дождь",
+            "tempDay": "+26°",
+            "tempNight": "+17°"
+        },
+        {
+            "day": 7,
+            "title": "Преимущественно ясно",
+            "tempDay": "+31°",
+            "tempNight": "+16°"
+        },
+        {
+            "day": 8,
+            "title": "Ясно",
+            "tempDay": "+33°",
+            "tempNight": "+17°"
+        },
+        {
+            "day": 9,
+            "title": "Частично облачно",
+            "tempDay": "+34°",
+            "tempNight": "+18°"
+        },
+        {
+            "day": 10,
+            "title": "Облачно",
+            "tempDay": "+24°",
+            "tempNight": "+20°"
+        },
+        {
+            "day": 11,
+            "title": "Облачно, дождь с грозами",
+            "tempDay": "+22°",
+            "tempNight": "+18°"
+        },
+        {
+            "day": 12,
+            "title": "Преимущественно облачно",
+            "tempDay": "+26°",
+            "tempNight": "+15°"
+        },
+        {
+            "day": 13,
+            "title": "Преимущественно облачно",
+            "tempDay": "+25°",
+            "tempNight": "+16°"
+        },
+        {
+            "day": 14,
+            "title": "Облачно и дождь",
+            "tempDay": "+15°",
+            "tempNight": "+16°"
+        },
+        {
+            "day": 15,
+            "title": "Преимущественно облачно",
+            "tempDay": "+22°",
+            "tempNight": "+14°"
+        },
+        {
+            "day": 16,
+            "title": "Ясно",
+            "tempDay": "+27°",
+            "tempNight": "+13°"
+        },
+        {
+            "day": 17,
+            "title": "Частично облачно",
+            "tempDay": "+28°",
+            "tempNight": "+16°"
+        },
+        {
+            "day": 18,
+            "title": "Облачно и дождь",
+            "tempDay": "+22°",
+            "tempNight": "+18°"
+        },
+        {
+            "day": 19,
+            "title": "Преимущественно облачно",
+            "tempDay": "+29°",
+            "tempNight": "+17°"
+        },
+        {
+            "day": 20,
+            "title": "Частично облачно и вероятность дождя с грозами",
+            "tempDay": "+27°",
+            "tempNight": "+17°"
+        },
+        {
+            "day": 21,
+            "title": "Преимущественно облачно",
+            "tempDay": "+29°",
+            "tempNight": "+16°"
+        },
+        {
+            "day": 22,
+            "title": "Облачно и слабый дождь",
+            "tempDay": "+17°",
+            "tempNight": "+17°"
+        },
+        {
+            "day": 23,
+            "title": "Ясно",
+            "tempDay": "+20°",
+            "tempNight": "+12°"
+        },
+        {
+            "day": 24,
+            "title": "Ясно",
+            "tempDay": "+27°",
+            "tempNight": "+11°"
+        },
+        {
+            "day": 25,
+            "title": "Ясно",
+            "tempDay": "+32°",
+            "tempNight": "+16°"
+        },
+        {
+            "day": 26,
+            "title": "Преимущественно ясно",
+            "tempDay": "+33°",
+            "tempNight": "+18°"
+        },
+        {
+            "day": 27,
+            "title": "Частично облачно",
+            "tempDay": "+30°",
+            "tempNight": "+19°"
+        },
+        {
+            "day": 28,
+            "title": "Облачно",
+            "tempDay": "+19°",
+            "tempNight": "+17°"
+        },
+        {
+            "day": 29,
+            "title": "Преимущественно ясно",
+            "tempDay": "+23°",
+            "tempNight": "+13°"
+        },
+        {
+            "day": 30,
+            "title": "Частично облачно",
+            "tempDay": "+24°",
+            "tempNight": "+13°"
+        },
+        {
+            "day": 31,
+            "title": "Ясно",
+            "tempDay": "+25°",
+            "tempNight": "+13°"
+        }
+    ]
+}
