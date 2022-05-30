@@ -4,5 +4,5 @@ import 'weatherParse.dart';
 
 main(List<String> arguments) async {
   var weather = Weather();
-  weather.getData();
+  weather.hour24();
 }

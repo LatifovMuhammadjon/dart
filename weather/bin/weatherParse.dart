@@ -92,4 +92,42 @@ class Weather {
         "E:/coding/dart/weather/jsons/${WeatherModel.country}_${WeatherModel.city}_${WeatherModel.year}_${monthToString(WeatherModel.month)}.json");
     return file.existsSync();
   }
+
+  hour24() async {
+    var response = await get(Uri.parse(
+        "https://world-weather.ru/pogoda/${WeatherModel.country}/${WeatherModel.city}/24hours"));
+    if (response.statusCode == 200) {
+      var document = parse(response.body);
+      var captions = [
+        "Soatlar",
+        "Harorat",
+        "Havo harorati",
+        "Yog'ingarchilik ehtimoli",
+        "Bosim",
+        "Shamol tezligi",
+        "Havo namligi"
+      ];
+      var columns = [];
+      columns.add(document.getElementsByClassName("weather-day"));
+      columns.add(document.querySelectorAll(".weather-temperature span"));
+      columns.add(document.getElementsByClassName("weather-feeling"));
+      columns.add(document.getElementsByClassName("weather-probability"));
+      columns.add(document.getElementsByClassName("weather-pressure"));
+      columns.add(document.querySelectorAll(".weather-wind span~span"));
+      columns.add(document.getElementsByClassName("weather-humidity"));
+      for (var i = 0; i < captions.length; i++) {
+        stdout.write("${captions[i]}\t");
+      }
+      print("");
+      for (var i = 0; i < columns[0].length; i++) {
+        for (var j = 0; j < columns.length; j++) {
+          stdout.write("${columns[j][i].innerHtml}\t");
+          stdout.write("${j==2||j==5?"\t":""}");
+          stdout.write("${j==3?"\t\t\t":""}");
+
+        }
+        print("");
+      }
+    }
+  }
 }
