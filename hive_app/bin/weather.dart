@@ -7,7 +7,7 @@ import 'package:http/http.dart';
 import 'modelWeather.dart';
 
 class Weather {
-  List<WeatherModel> listModel = [];
+  List<WeatherModel> _listModel = [];
 
   loadData() async {
     var weather = WeatherModel();
@@ -26,7 +26,7 @@ class Weather {
         var title = titleList[i].attributes["title"];
         var tempNight = tempNightList[i].innerHtml;
         var day = int.parse(dayList[i].innerHtml);
-        listModel.add(WeatherModel(
+        _listModel.add(WeatherModel(
             tempDay: tempDay, tempNight: tempNight, title: title, day: day));
       }
     }
