@@ -20,21 +20,9 @@ class Fish implements FishAction {
   }
 
   @override
-  onDead() {
-    // TODO: implement onDead
-    throw UnimplementedError();
-  }
+  bool onDead() => age == liveTime;
 
   @override
-  onGenerate(String fatherName, String motherName) {
-    this._name =
-        fatherName.substring(fatherName.length - fatherName.length ~/ 3) +
-            motherName.substring(motherName.length - motherName.length ~/ 3) +
-            String.fromCharCodes(List.filled(
-                (motherName.length + fatherName.length) ~/ 6,
-                Random().nextInt(26) + 97));
-  }
-
   @override
   onLive() {
     // TODO: implement onLive
@@ -52,6 +40,13 @@ class Fish implements FishAction {
     return "Fish{gender: $type, name: $_name, age: $age}";
   }
 }
+
+onGenerate(String fatherName, String motherName) =>
+    fatherName.substring(fatherName.length - fatherName.length ~/ 3) +
+    motherName.substring(motherName.length - motherName.length ~/ 3) +
+    String.fromCharCodes(List.filled(
+        (motherName.length + fatherName.length) ~/ 6,
+        Random().nextInt(26) + 97));
 
 void main(List<String> args) {
   // var fish = Fish();

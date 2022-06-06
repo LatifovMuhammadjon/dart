@@ -17,6 +17,10 @@ class Aquarium implements Actions {
         Fish fishB = Fish(FishType.F, "mother", this);
         if (getSizeFish() > 20) {
           fishA.liveTime = 10 + Random().nextInt(40);
+          fishB.liveTime = 10 + Random().nextInt(40);
+        } else {
+          fishA.liveTime = 20 + Random().nextInt(80);
+          fishB.liveTime = 20 + Random().nextInt(80);
         }
         listFish[fishA.name] = fishA;
         listFish[fishB.name] = fishB;
@@ -24,6 +28,7 @@ class Aquarium implements Actions {
         listFishB.add(fishB.name);
         fishA.birthDate = date;
         fishB.birthDate = date;
+        onStart();
       } else if (listFishA.isEmpty || listFishB.isEmpty) {
         print(
             "Akvariumda${listFish.isEmpty ? "" : listFishA.isEmpty ? " A" : " B"} baliq qolmadi");
@@ -31,13 +36,21 @@ class Aquarium implements Actions {
         print(listFish);
         print(listFishA);
         print(listFishB);
-      }
-      listFish.forEach(
-        (key, value) {
+        for (var i = 0; i < listFish.length; i++) {
+          var key = listFish.entries.elementAt(i);
+          var value = listFish.values.elementAt(i);
           value.age = date - value.birthDate!;
-        },
-      );
-      onStart();
+          if (value.onDead()) {
+            if (listFishA.contains(value.name))
+              listFishA.remove(value.name);
+            else
+              listFishB.remove(value.name);
+            listFish.remove(value.name);
+          }
+        }
+
+        onStart();
+      }
     });
   }
 

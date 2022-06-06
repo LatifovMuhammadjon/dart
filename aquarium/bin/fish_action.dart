@@ -1,8 +1,8 @@
 abstract class FishAction {
-  onGenerate(String fatherName, String motherName) {}
+  // onGenerate(String fatherName, String motherName) {}
   String get name;
   onLive() {}
   onChoose() {}
-  onDead() {}
+  bool onDead();
   onWill() {}
 }
