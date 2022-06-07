@@ -6,5 +6,5 @@ class Actions {
   getSizeFish() {}
   getSizeFishA() {}
   getSizeFishB() {}
-  showInfo() {}
+  showInfo() {} 
 }

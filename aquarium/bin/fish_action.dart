@@ -4,5 +4,5 @@ abstract class FishAction {
   onLive() {}
   onChoose() {}
   bool onDead();
-  onWill() {}
+  bool onWill();
 }

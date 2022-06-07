@@ -1,6 +1,6 @@
 import 'dart:math';
-
 import 'actions.dart';
+import 'aquarium.dart';
 import 'fish_action.dart';
 
 enum FishType { M, F }
@@ -8,21 +8,38 @@ enum FishType { M, F }
 class Fish implements FishAction {
   FishType type;
   String _name;
-  int? liveTime, birthDate, age = 0;
+  late int liveTime, birthDate, countChoose;
+  int age = 0;
+  List<int> chooseTimes = [];
 
-  Fish(this.type, this._name, Actions action) {
-    // if (name == null) onGenerate(fatherName, motherName);
-  }
-  @override
-  onChoose() {
-    // TODO: implement onChoose
-    throw UnimplementedError();
+  Fish(this.type, this._name, Aquarium action) {
+    if (type == FishType.M)
+      action.listFishA.add(name);
+    else
+      action.listFishB.add(name);
+    birthDate = action.date;
+    countChoose = 1 + Random().nextInt(action.getSizeFish() <= 20 ? 3 : 2);
+    liveTime = 10 + Random().nextInt(action.getSizeFish() <= 20 ? 40 : 20);
+    for (var i = 0; i < countChoose; i++) {
+      var chooseTime = Random().nextInt(liveTime);
+      if (chooseTimes.contains(chooseTime)) {
+        i--;
+        continue;
+      } else {
+        chooseTimes.add(chooseTime);
+      }
+    }
+    action.listFish[name] = this;
   }
 
   @override
   bool onDead() => age == liveTime;
-
   @override
+  onChoose() {
+    //  / TODO: implement onChoose
+    throw UnimplementedError();
+  }
+
   @override
   onLive() {
     // TODO: implement onLive
@@ -30,7 +47,7 @@ class Fish implements FishAction {
   }
 
   @override
-  onWill() {}
+  bool onWill() => Random().nextBool();
 
   @override
   String get name => this._name;
@@ -44,9 +61,9 @@ class Fish implements FishAction {
 onGenerate(String fatherName, String motherName) =>
     fatherName.substring(fatherName.length - fatherName.length ~/ 3) +
     motherName.substring(motherName.length - motherName.length ~/ 3) +
-    String.fromCharCodes(List.filled(
+    String.fromCharCodes(List.generate(
         (motherName.length + fatherName.length) ~/ 6,
-        Random().nextInt(26) + 97));
+        (index) => Random().nextInt(26) + 97));
 
 void main(List<String> args) {
   // var fish = Fish();

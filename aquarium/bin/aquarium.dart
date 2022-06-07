@@ -15,19 +15,6 @@ class Aquarium implements Actions {
       if (listFish.isEmpty && countDead == 0) {
         Fish fishA = Fish(FishType.M, "father", this);
         Fish fishB = Fish(FishType.F, "mother", this);
-        if (getSizeFish() > 20) {
-          fishA.liveTime = 10 + Random().nextInt(40);
-          fishB.liveTime = 10 + Random().nextInt(40);
-        } else {
-          fishA.liveTime = 20 + Random().nextInt(80);
-          fishB.liveTime = 20 + Random().nextInt(80);
-        }
-        listFish[fishA.name] = fishA;
-        listFish[fishB.name] = fishB;
-        listFishA.add(fishA.name);
-        listFishB.add(fishB.name);
-        fishA.birthDate = date;
-        fishB.birthDate = date;
         onStart();
       } else if (listFishA.isEmpty || listFishB.isEmpty) {
         print(
@@ -36,10 +23,14 @@ class Aquarium implements Actions {
         print(listFish);
         print(listFishA);
         print(listFishB);
-        for (var i = 0; i < listFish.length; i++) {
+        print(countDead);
+        for (var i = 0; i < getSizeFish(); i++) {
           var key = listFish.entries.elementAt(i);
           var value = listFish.values.elementAt(i);
-          value.age = date - value.birthDate!;
+          value.age = date - value.birthDate;
+          if (value.chooseTimes.contains(value.age) &&
+              (getSizeFishA() == 1 || getSizeFishB() == 1 || value.onWill()))
+            onChosenFish(value.type, value.name);
           if (value.onDead()) {
             if (listFishA.contains(value.name))
               listFishA.remove(value.name);
@@ -64,7 +55,17 @@ class Aquarium implements Actions {
   int getSizeFishB() => listFishB.length;
 
   @override
-  onChosenFish(FishType type, String name) {}
+  onChosenFish(FishType type, String name) {
+    if (type == FishType.M) {
+      Fish choosenFish = listFish[listFishB[Random().nextInt(getSizeFishB())]]!;
+      Fish(FishType.values[Random().nextInt(2)],
+          onGenerate(name, choosenFish.name), this);
+    } else {
+      Fish choosenFish = listFish[listFishA[Random().nextInt(getSizeFishA())]]!;
+      Fish(FishType.values[Random().nextInt(2)],
+          onGenerate(choosenFish.name, name), this);
+    }
+  }
 
   @override
   onDead({String? name}) {
