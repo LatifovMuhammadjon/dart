@@ -1,14 +1,18 @@
-import 'dart:math';
-
 import 'actions.dart';
 import 'fish.dart';
+import 'functions.dart';
+import 'shark.dart';
 
 class Aquarium implements Actions {
+  /// [variables]
+  Shark _shark = Shark();
   int date = 0;
   Map<String, Fish> listFish = {};
   List<String> listFishA = [];
   List<String> listFishB = [];
   int countDead = 0;
+
+  /// [methods]
   onStart() {
     Future.delayed(Duration(seconds: 1), () {
       date++;
@@ -20,26 +24,8 @@ class Aquarium implements Actions {
         print(
             "Akvariumda${listFish.isEmpty ? "" : listFishA.isEmpty ? " A" : " B"} baliq qolmadi");
       } else {
-        print(listFish);
-        print(listFishA);
-        print(listFishB);
-        print(countDead);
-        for (var i = 0; i < getSizeFish(); i++) {
-          var key = listFish.entries.elementAt(i);
-          var value = listFish.values.elementAt(i);
-          value.age = date - value.birthDate;
-          if (value.chooseTimes.contains(value.age) &&
-              (getSizeFishA() == 1 || getSizeFishB() == 1 || value.onWill()))
-            onChosenFish(value.type, value.name);
-          if (value.onDead()) {
-            if (listFishA.contains(value.name))
-              listFishA.remove(value.name);
-            else
-              listFishB.remove(value.name);
-            listFish.remove(value.name);
-          }
-        }
-
+        _shark.eat(this);
+        checkFish();
         onStart();
       }
     });
@@ -56,31 +42,39 @@ class Aquarium implements Actions {
 
   @override
   onChosenFish(FishType type, String name) {
-    if (type == FishType.M) {
-      Fish choosenFish = listFish[listFishB[Random().nextInt(getSizeFishB())]]!;
-      Fish(FishType.values[Random().nextInt(2)],
-          onGenerate(name, choosenFish.name), this);
-    } else {
-      Fish choosenFish = listFish[listFishA[Random().nextInt(getSizeFishA())]]!;
-      Fish(FishType.values[Random().nextInt(2)],
-          onGenerate(choosenFish.name, name), this);
+    var fishName = type == FishType.M
+        ? listFishB[randInt(getSizeFishB())]
+        : listFishA[randInt(getSizeFishA())];
+    Fish(FishType.values[randInt(2)], onGenerate(name, fishName), this);
+  }
+
+  checkFish() {
+    for (var i = 0; i < getSizeFish(); i++) {
+      var key = listFish.entries.elementAt(i);
+      var value = listFish.values.elementAt(i);
+      value.age = date - value.birthDate;
+      if (value.onDead()) {
+        onDead(value.name);
+        continue;
+      }
+      if (value.chooseTimes.contains(value.age) &&
+          (getSizeFishA() <= 2 || getSizeFishB() <= 2 || value.onWill()))
+        onChosenFish(value.type, value.name);
     }
   }
 
   @override
-  onDead({String? name}) {
-    if (listFish[name]!.type == FishType.M) {
-      listFishA.remove(name);
-    } else if (listFish[name]!.type == FishType.F) {
-      listFishA.remove(name);
-    }
+  onDead(String? name) {
+    (listFish[name]?.type == FishType.M ? listFishA : listFishB).remove(name);
     listFish.remove(name);
+    print("$name is dead");
     countDead++;
+    showInfo();
   }
 
   @override
   showInfo() {
-    // TODO: implement showInfo
-    throw UnimplementedError();
+    print("Aquarium has ${getSizeFish()} fish");
+    print("${countDead} fish are dead");
   }
 }
