@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'sort_algorithms.dart';
 
 class CountingSort implements SortAlgorithm {
